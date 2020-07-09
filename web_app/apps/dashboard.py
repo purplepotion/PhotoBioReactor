@@ -1,4 +1,3 @@
-import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output, State
@@ -16,7 +15,8 @@ from web_app.app import app
 #     'text': '#7FDBFF'
 # }
 
-COLORS = ["#fad3cf", "#7971ea", "#a7d129", "#b643cd", "#f95959", "#f5f5c6", "#f6f4f4"]
+COLORS = ["#fad3cf", "#7971ea", "#a7d129",
+          "#b643cd", "#f95959", "#f5f5c6", "#f6f4f4"]
 
 # df = pd.DataFrame({"x": [1, 2, 3], "SF": [4, 1, 2], "Montreal": [2, 4, 5]})
 
@@ -39,30 +39,35 @@ layout = html.Div([
                 html.Div([
                     dcc.Input(
                         id="inpA",
+                        type="number",
                         placeholder="First Value",
                         className="row col inpUser",
                         value=0
                     ),
                     dcc.Input(
                         id="inpB",
+                        type="number",
                         placeholder="Second Value",
                         className="row col inpUser",
                         value=0
                     ),
                     dcc.Input(
                         id="inpC",
+                        type="number",
                         placeholder="Third Value",
                         className="row col inpUser",
                         value=0
                     ),
                     dcc.Input(
                         id="inpD",
+                        type="number",
                         placeholder="Fourth Value",
                         className="row col inpUser",
                         value=0
                     ),
                     dcc.Input(
                         id="inpE",
+                        type="number",
                         placeholder="Fifth Value",
                         className="row col inpUser",
                         value=0
@@ -73,7 +78,7 @@ layout = html.Div([
                         className="row align-self-end"
                     )
                 ],
-                className="container divInputs"),
+                    className="container divInputs"),
             ],
                 id="divUserInput",
                 className="col-md divDisplay"
@@ -81,14 +86,13 @@ layout = html.Div([
             html.Div([
                 html.Div(
                     id="divColor",
-                    className="align-self-center",
                     style={
                         "background-color": COLORS[0]
                     }
                 )
             ],
                 id="divBuildingColor",
-                className="container d-flex align-items-center justify-content-center col-md divDisplay"
+                className="col-md divDisplay"
             ),
         ], className="row"),
         html.Div([
@@ -113,8 +117,16 @@ layout = html.Div([
     ], className="container")
 ])
 
+
 @app.callback(
-    Output('divBuildingColor', 'children'),
+    [
+        Output('divBuildingColor', 'children'),
+        Output('inpA', 'value'),
+        Output('inpB', 'value'),
+        Output('inpC', 'value'),
+        Output('inpD', 'value'),
+        Output('inpE', 'value'),
+    ],
     [
         Input('btnSubmit', 'n_clicks')
     ],
@@ -126,17 +138,20 @@ layout = html.Div([
         State('inpE', 'value'),
     ]
 )
-def update_color(n_clicks, a, b, c, d, e):
-    a = int(a)
-    b = int(b)
-    c = int(c)
-    d = int(d)
-    e = int(e)
-    print(a+b+c+d+e)
-    return html.Div(
-                    id="divColor",
-                    className="align-self-center",
-                    style={
-                        "background-color":COLORS[(a+b+c+d+e)%7]
-                    }
-                )
+def update_color(n_clicks, *args):
+    a, b, c, d, e = args
+    sum = 0
+    for x in args:
+        if x is not None:
+            sum += x
+
+    return [
+        html.Div(
+            id="divColor",
+            className="align-self-center",
+            style={
+                "background-color": COLORS[sum % 7]
+            }
+        ),
+        None, None, None, None, None
+    ]

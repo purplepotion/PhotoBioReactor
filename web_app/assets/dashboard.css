@@ -12,6 +12,9 @@ body {
     color: aliceblue;
     height: 400px;
     border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container.divInputs {
@@ -37,8 +40,16 @@ body {
     width: 100%;
 }
 
+#divBuildingColor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 #divColor {
     /* background-color: red; */
+    align-self: center;
     height: 75%;
     width: 75%;
     border-radius: 10px;
