@@ -1,15 +1,10 @@
-import sys
-
-# =================================================
-# Only Path Variable Used till now
-# Windows Users should use raw strings
-sys.path.append("/mnt/data/Events/TATA Crucible/PhotoBioReactor")
-# =================================================
+#! /mnt/data/Events/TATA Crucible/PhotoBioReactor/env python3
 
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 
+import add_paths
 from web_app.app import app
 from web_app.apps import dashboard, building
 

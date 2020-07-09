@@ -1,4 +1,3 @@
-import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
@@ -57,8 +56,8 @@ layout = html.Div([
             html.Button([
                 dcc.Link('DASHBOARD', href='/apps/dashboard')
             ],
-            id='btnPageChange',
-        ),
-    ], className='row')
+                id='btnPageChange',
+            ),
+        ], className='row')
     ], className="container")
 ])
