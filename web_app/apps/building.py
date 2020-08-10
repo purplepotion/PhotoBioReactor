@@ -20,8 +20,8 @@ layout = html.Div([
                 # Make Changes in the below div in H3 and P
                 ####################################################
                 html.Div([
-                    html.H3("WINTER LOOK", className="imgTitle"),
-                    html.P("Description", className="imgDesc")
+                    html.H3("SEASONAL APPEARANCE", className="imgTitle"),
+                    html.P("Overall building look according to seasons, a detailed insight to the customer while changing the colours", className="imgDesc")
                 ], className="divDescription"),
             ],
                 className="col-md-12 col-xl-4 divDisplay"
@@ -45,8 +45,8 @@ layout = html.Div([
                 # Make Changes in the below div in H3 and P
                 ####################################################
                 html.Div([
-                    html.H3("ALGAL DIAGRAM", className="imgTitle"),
-                    html.P("Description", className="imgDesc")
+                    html.H3("BUILDING ORIENTAITON DIAGRAM", className="imgTitle"),
+                    html.P("Algal facade are pulled away from the building, to maintain an optimal exposure to sun", className="imgDesc")
                 ], className="divDescription"),
             ],
                 className="col-md-12 col-xl-4 divDisplay divImages"
@@ -59,7 +59,7 @@ layout = html.Div([
                 ####################################################
                 html.Div([
                     html.H3("ELEVATION", className="imgTitle"),
-                    html.P("Description", className="imgDesc")
+                    html.P("The simulated display of the building from low ground", className="imgDesc")
                 ], className="divDescription"),
             ],
                 className="col-md-12 col-xl-4 divDisplay divImages"
@@ -84,7 +84,7 @@ layout = html.Div([
                 ####################################################
                 html.Div([
                     html.H3("ROOF PLAN", className="imgTitle"),
-                    html.P("Description", className="imgDesc")
+                    html.P("Installment of Photovoltaics along with photobioreactors", className="imgDesc")
                 ], className="divDescription"),
             ],
                 className="col-md-12 col-xl-4 divDisplay divImages"
@@ -97,7 +97,7 @@ layout = html.Div([
                 ####################################################
                 html.Div([
                     html.H3("SPACE TYPES", className="imgTitle"),
-                    html.P("Description", className="imgDesc")
+                    html.P("The PBR's are integrated with the internal structure to improve the aesthetics", className="imgDesc")
                 ], className="divDescription"),
             ],
                 className="col-md-12 col-xl-4 divDisplay divImages"

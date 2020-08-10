@@ -1,7 +1,7 @@
 import sys
 
-ankit = "/mnt/data/Events/TATA Crucible/PhotoBioReactor"
-
+ankit = r"C:\Users\LENOVO\Documents\GitHub\PhotoBioReactor"
+#deba = r"C:\Users\LENOVO\Documents\GitHub\PhotoBioReactor"
 sys.path.append(ankit)
 
 path = ankit
