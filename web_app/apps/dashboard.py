@@ -6,24 +6,19 @@ import pandas as pd
 
 from web_app.app import app
 
-# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-# app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-# colors = {
-#     'background': '#111111',
-#     'text': '#7FDBFF'
-# }
+from web_app.apps.helpers.graph_helpers import (nutrients_graph,
+                                                light_energy_graph,
+                                                temp_graph,
+                                                pH_graph,
+                                                afdw_graph,
+                                                do_graph,
+                                                dates)
 
 COLORS = ["#fad3cf", "#7971ea", "#a7d129",
           "#b643cd", "#f95959", "#f5f5c6", "#f6f4f4"]
 
-# df = pd.DataFrame({"x": [1, 2, 3], "SF": [4, 1, 2], "Montreal": [2, 4, 5]})
+dropdownOptions = [{'label': date, "value": date} for date in dates]
 
-# fig = px.bar(df, x="x", y=["SF", "Montreal"], barmode="group")
-#
-# fig.update_layout(plot_bgcolor=colors['background'],
-#                   paper_bgcolor=colors['background'], font_color=colors['text'])
 
 layout = html.Div([
     html.Div([
@@ -34,79 +29,107 @@ layout = html.Div([
                 className="col"
             ),
         ], className="row"),
+
         html.Div([
             html.Div([
-                html.Div([
-                    dcc.Input(
-                        id="inpA",
-                        type="number",
-                        placeholder="First Value",
-                        className="row col inpUser",
-                        value=0
-                    ),
-                    dcc.Input(
-                        id="inpB",
-                        type="number",
-                        placeholder="Second Value",
-                        className="row col inpUser",
-                        value=0
-                    ),
-                    dcc.Input(
-                        id="inpC",
-                        type="number",
-                        placeholder="Third Value",
-                        className="row col inpUser",
-                        value=0
-                    ),
-                    dcc.Input(
-                        id="inpD",
-                        type="number",
-                        placeholder="Fourth Value",
-                        className="row col inpUser",
-                        value=0
-                    ),
-                    dcc.Input(
-                        id="inpE",
-                        type="number",
-                        placeholder="Fifth Value",
-                        className="row col inpUser",
-                        value=0
-                    ),
-                    html.Button(
-                        children="SUBMIT",
-                        id="btnSubmit",
-                        className="row align-self-end"
-                    )
-                ],
-                    className="container divInputs"),
+                html.H4(
+                    "DATE",
+                    className="imgTitle"
+                ),
+                html.P(
+                    "Visualizations of the data collected from the selected date will be displayed.",
+                    className="imgDesc"
+                ),
+                dcc.Dropdown(
+                    options=dropdownOptions,
+                    # value=dates[0],
+                    id="dateDropdown",
+                    placeholder="Select a Date",
+                    style={
+                        'width': '300px',
+                        'color': '#000000',
+                        'margin-top': '10px',
+                    }),
             ],
-                id="divUserInput",
-                className="col-md divDisplay"
+                className="col-4 divGraphs divInputs"
             ),
             html.Div([
-                html.Div(
-                    id="divColor",
+                dcc.Graph(
+                    id="nutrients_graph",
                     style={
-                        "background-color": COLORS[0]
-                    }
+                        'width': '100%',
+                        'height': '100%',
+                        'border-radius': '5px',
+                    },
+                    figure=nutrients_graph()
                 )
             ],
-                id="divBuildingColor",
-                className="col-md divDisplay"
+                className="col-7 divGraphs divDisplay",
+                style={
+                    # 'align-self': 'end'
+                    'margin-left': '70px'
+            }
             ),
         ], className="row"),
+
         html.Div([
-            html.Div(
-                children='DIV 3',
-                id="divGraph1",
-                className="col-md divDisplay"
+            html.Div([
+                dcc.Graph(
+                    id="light_energy_graph",
+                    style={
+                        'width': '100%',
+                        'height': '100%',
+                        'border-radius': '5px',
+                    },
+                    figure=light_energy_graph()
+                )
+            ],
+                className="col divGraphs divDisplay"
             ),
-            html.Div(
-                children='DIV 4',
-                id="divGraph2",
-                className="col-md divDisplay"
+            html.Div([
+                dcc.Graph(
+                    id="temp_graph",
+                    style={
+                        'width': '100%',
+                        'height': '100%',
+                        'border-radius': '5px',
+                    },
+                    figure=temp_graph()
+                )
+            ],
+                className="col divGraphs divDisplay"
             ),
         ], className="row"),
+
+        html.Div([
+            html.Div([
+                dcc.Graph(
+                    id="afdw_graph",
+                    style={
+                        'width': '100%',
+                        'height': '100%',
+                        'border-radius': '5px',
+                    },
+                    figure=afdw_graph()
+                )
+            ],
+                className="col divGraphs divDisplay"
+            ),
+            html.Div([
+                dcc.Graph(
+                    id="do_graph",
+                    style={
+                        'width': '100%',
+                        'height': '100%',
+                        'border-radius': '5px',
+                    },
+                    figure=do_graph()
+                )
+            ],
+                className="col divGraphs divDisplay"
+            ),
+        ], className="row"),
+
         html.Div([
             html.Button([
                 dcc.Link('BUILDING', href='/apps/building')
@@ -118,40 +141,51 @@ layout = html.Div([
 ])
 
 
-@app.callback(
-    [
-        Output('divBuildingColor', 'children'),
-        Output('inpA', 'value'),
-        Output('inpB', 'value'),
-        Output('inpC', 'value'),
-        Output('inpD', 'value'),
-        Output('inpE', 'value'),
-    ],
-    [
-        Input('btnSubmit', 'n_clicks')
-    ],
-    [
-        State('inpA', 'value'),
-        State('inpB', 'value'),
-        State('inpC', 'value'),
-        State('inpD', 'value'),
-        State('inpE', 'value'),
-    ]
+@ app.callback(
+    [Output('nutrients_graph', 'figure'), ],
+    [Input('dateDropdown', 'value')],
 )
-def update_color(n_clicks, *args):
-    a, b, c, d, e = args
-    sum = 0
-    for x in args:
-        if x is not None:
-            sum += x
+def update_nutrients_graph(value):
+    if not value:
+        value = dates[0]
+    return nutrients_graph(value),
 
-    return [
-        html.Div(
-            id="divColor",
-            className="align-self-center",
-            style={
-                "background-color": COLORS[sum % 7]
-            }
-        ),
-        None, None, None, None, None
-    ]
+
+@ app.callback(
+    [Output('light_energy_graph', 'figure'), ],
+    [Input('dateDropdown', 'value')],
+)
+def update_light_energy_graph(value):
+    if not value:
+        value = dates[0]
+    return light_energy_graph(value),
+
+
+@ app.callback(
+    [Output('temp_graph', 'figure'), ],
+    [Input('dateDropdown', 'value')],
+)
+def update_temp_graph(value):
+    if not value:
+        value = dates[0]
+    return temp_graph(value),
+
+
+@ app.callback(
+    [Output('afdw_graph', 'figure'), ],
+    [Input('dateDropdown', 'value')],
+)
+def update_afdw_graph(value):
+    if not value:
+        value = dates[0]
+    return afdw_graph(value),
+
+
+@ app.callback(
+    [Output('do_graph', 'figure'), ],
+    [Input('dateDropdown', 'value')],
+)
+def update_do_graph(value):
+    if not value:
+        value = dates[0]
+    return do_graph(value),

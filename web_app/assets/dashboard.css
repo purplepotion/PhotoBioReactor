@@ -6,6 +6,11 @@ body {
     max-width: 80%;
 }
 
+/* .buildingImages {
+    display: flex;
+    justify-content: center;
+} */
+
 .divDisplay {
     margin: 20px;
     background-color: #28283c;
@@ -17,13 +22,37 @@ body {
     align-items: center;
 }
 
-.container.divInputs {
+.divDescription {
+    display: inline;
+    text-align: center;
+    align-items: center;
+}
+
+.divImages {
+    margin: 30px;
+    background-color: #28283c;
+    color: aliceblue;
+    height: 400px;
+    border-radius: 20px;
     display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
     justify-content: center;
     align-items: center;
     padding: 15px;
+}
+
+.divGraphs {
+    padding: 15px;
+    height: 480px;
+}
+
+.divInputs {
+    display: flex;
+    flex-direction: column;
+    /* flex-shrink: 0; */
+    justify-content: center;
+    align-items: left;
+    padding: 30px;
+    margin: 20px;
     min-height: auto;
 }
 
@@ -38,6 +67,27 @@ body {
     margin: 0;
     margin-top: 20px;
     width: 100%;
+}
+
+.buildingImg {
+    /* max-width: 100%; */
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    border-radius: 5px;
+}
+
+.imgTitle {
+    font-family: Josefin Sans;
+    font-weight: 500;
+    color: #ed6663;
+}
+
+.imgDesc {
+    font-family: Josefin Sans;
+    color: #318fb5;
+    font-size: 14pt;
+    margin-top: 10px;
 }
 
 #divBuildingColor {
@@ -56,7 +106,7 @@ body {
 }
 
 #divUserInput {
-    padding: 0;
+    padding: 15px;
 }
 
 #btnSubmit {
@@ -91,6 +141,10 @@ body {
     width: 130px;
 }
 
+/* #btnPageChange .btnPageChangeBuilding {
+    align-self: flex-start;
+} */
+
 #btnPageChange a {
     text-decoration: none;
     color: #ffb997;
@@ -99,4 +153,9 @@ body {
 #btnPageChange a:hover {
     text-decoration: none;
     color: #c99175;
+}
+
+/* Graphs */
+.divGraphs .main-svg {
+    border-radius: 10px;
 }
