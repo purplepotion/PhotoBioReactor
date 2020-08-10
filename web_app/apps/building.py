@@ -5,22 +5,6 @@ import pandas as pd
 
 from web_app.app import app
 
-# external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-
-# app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-
-# colors = {
-#     'background': '#111111',
-#     'text': '#7FDBFF'
-# }
-
-# df = pd.DataFrame({"x": [1, 2, 3], "SF": [4, 1, 2], "Montreal": [2, 4, 5]})
-
-# fig = px.bar(df, x="x", y=["SF", "Montreal"], barmode="group")
-#
-# fig.update_layout(plot_bgcolor=colors['background'],
-#                   paper_bgcolor=colors['background'], font_color=colors['text'])
-
 layout = html.Div([
     html.Div([
         html.Div([
