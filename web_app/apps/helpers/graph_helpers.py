@@ -5,9 +5,9 @@ import plotly.express as px
 import pandas as pd
 
 from web_app.app import app
+from web_app.add_paths import ankit
 
-df = pd.read_csv(
-    "/mnt/data/Events/TATA Crucible/PhotoBioReactor/web_app/apps/data/data.csv")
+df = pd.read_csv(ankit + "/web_app/apps/data/data.csv")
 
 dates = list(df['Date'].unique())
 
