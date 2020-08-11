@@ -24,7 +24,7 @@ layout = html.Div([
                     html.P("Overall building look according to seasons, a detailed insight to the customer while changing the colours", className="imgDesc")
                 ], className="divDescription"),
             ],
-                className="col-md-12 col-xl-4 divDisplay"
+                className="col-md-12 col-xl-4 divDisplay divImages"
             ),
             html.Div([
                 html.Img(src=app.get_asset_url("./images/winter.PNG"),
@@ -111,11 +111,13 @@ layout = html.Div([
         ], className="row"),
 
         html.Div([
-            html.Button([
-                dcc.Link('DASHBOARD', href='/apps/dashboard')
-            ],
-                id='btnPageChange',
-            ),
-        ], className='row justify-content-center')
+            html.Div([
+                html.Button([
+                    dcc.Link('DASHBOARD', href='/apps/dashboard')
+                ],
+                    id='btnPageChange',
+                ),
+            ], className='col-2 justify-content-center')
+        ], className='row ')
     ], className="container")
 ])

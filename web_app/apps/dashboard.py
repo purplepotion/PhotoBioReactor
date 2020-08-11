@@ -26,7 +26,7 @@ layout = html.Div([
             html.H1(
                 children='DASHBOARD',
                 id="dashboard_title",
-                className="col"
+                className="col-12"
             ),
         ], className="row"),
 
@@ -64,13 +64,13 @@ layout = html.Div([
                     figure=nutrients_graph()
                 )
             ],
-                className="col-7 divGraphs divDisplay",
+                className="col-6 divGraphs divDisplay",
                 style={
                     # 'align-self': 'end'
-                    'margin-left': '70px'
+                    # 'margin-left': '70px'
             }
             ),
-        ], className="row"),
+        ], className="row justify-content-center"),
 
         html.Div([
             html.Div([
@@ -84,7 +84,7 @@ layout = html.Div([
                     figure=light_energy_graph()
                 )
             ],
-                className="col divGraphs divDisplay"
+                className="col-5 divGraphs divDisplay"
             ),
             html.Div([
                 dcc.Graph(
@@ -97,9 +97,9 @@ layout = html.Div([
                     figure=temp_graph()
                 )
             ],
-                className="col divGraphs divDisplay"
+                className="col-5 divGraphs divDisplay"
             ),
-        ], className="row"),
+        ], className="row justify-content-center"),
 
         html.Div([
             html.Div([
@@ -113,7 +113,7 @@ layout = html.Div([
                     figure=afdw_graph()
                 )
             ],
-                className="col divGraphs divDisplay"
+                className="col-5 divGraphs divDisplay"
             ),
             html.Div([
                 dcc.Graph(
@@ -126,18 +126,20 @@ layout = html.Div([
                     figure=do_graph()
                 )
             ],
-                className="col divGraphs divDisplay"
+                className="col-5 divGraphs divDisplay"
             ),
-        ], className="row"),
+        ], className="row justify-content-center"),
 
         html.Div([
-            html.Button([
-                dcc.Link('BUILDING', href='/apps/building')
-            ],
-                id='btnPageChange',
-            ),
+            html.Div([
+                html.Button([
+                    dcc.Link('BUILDING', href='/apps/building')
+                ],
+                    id='btnPageChange',
+                ),
+            ],className='col-2')
         ], className='row justify-content-end')
-    ], className="container")
+    ], className="container-fluid justify-content-center")
 ])
 
 
