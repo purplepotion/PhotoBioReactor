@@ -6,4 +6,4 @@ Project for TATA Crucible Hackathon 2020
 
 ### Screenshots
 ![1](https://github.com/purplepotion/PhotoBioReactor/blob/master/Screenshot%20(44).png)
-![2](https://github.com/purplepotion/PhotoBioReactor/blob/master/Screenshot%20(44).png)
+![2](https://github.com/purplepotion/PhotoBioReactor/blob/master/Screenshot%20(45).png)
